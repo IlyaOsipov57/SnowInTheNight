@@ -15,6 +15,7 @@ namespace SnowInTheNight
 
         public static int GetTextIndex (String text)
         {
+            text = text.Replace("\r\n", "\n");
             if(!TextToIndex.ContainsKey(text))
             {
                 AddText(new TextItem(text));
