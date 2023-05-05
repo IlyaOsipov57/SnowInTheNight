@@ -100,16 +100,16 @@ namespace SnowInTheNight
             {
                 AddText(new TextItem()
                 {
-                    Key = Texts[i].TrimStart('\r', '\n'),
-                    Rus = Texts[i].TrimStart('\r', '\n'),
-                    Eng = Texts[i + 1].TrimStart('\r', '\n'),
+                    Key = Texts[i],
+                    Rus = Texts[i],
+                    Eng = Texts[i + 1],
                 });
             }
         }
 
         private static String[] GetAllTexts ()
         {
-            return Properties.Resources.TranslationData.Split('|');
+            return Properties.Resources.TranslationData.Split('|').Select(t => t.TrimStart('\r', '\n').Replace("\r\n", "\n")).ToArray();
         }
     }
 }

@@ -13,9 +13,22 @@ namespace SnowInTheNight
         {
             public Image Image;
 
-            public String Name;
+            public int LocationId;
+
+            public String Time;
 
             public Action OnChosen;
+
+            public String FullName
+            {
+                get
+                {
+                    var fullName = Location.FromId(LocationId).Name;
+                    if (!String.IsNullOrEmpty(Time))
+                        fullName += " " + Time;
+                    return fullName;
+                }
+            }
         }
 
         public LoadMenuItem[] Items;
@@ -69,7 +82,7 @@ namespace SnowInTheNight
 
                 g.FillRectangle(b2, new Rectangle((Point)(itemPosition - itemPadding), (Size)(itemSize + 2 * itemPadding + textOffset)));
                 g.DrawImageUnscaled(Data.Items[selectionShift + i].Image, (Point)itemPosition);
-                g.DrawString(Data.Items[selectionShift + i].Name, Drawer.gameFontMain, Brushes.Black, (Point)(itemPosition + new IntPoint(0, itemSize.Y)));
+                g.DrawString(Data.Items[selectionShift + i].FullName, Drawer.gameFontMain, Brushes.Black, (Point)(itemPosition + new IntPoint(0, itemSize.Y)));
             }
 
             if (itemsVisible > 0)

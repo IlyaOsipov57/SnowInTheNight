@@ -191,7 +191,8 @@ namespace SnowInTheNight
             loadMenu.Items = gameSaves.Select((save) => new LoadMenuData.LoadMenuItem()
             {
                 Image = save.GetGameThumbnail(),
-                Name = save.GetGameName(),
+                LocationId = save.GetLocationId(),
+                Time = save.GetGameTime(),
                 OnChosen = new Action(() =>
                 {
                     Enqueue(new LoadAction(save, gameSaves, sessionIndex));
@@ -225,7 +226,7 @@ namespace SnowInTheNight
                 new LoadMenuData.LoadMenuItem()
                 {
                     Image = gameSave.GetSaveThumbnail(),
-                    Name = gameSave.GetSaveName(),
+                    LocationId = location.Id,
                     OnChosen = new Action(() =>
                     {
                         if (canTravel)
@@ -248,7 +249,7 @@ namespace SnowInTheNight
             loadMenu.Items = travelLocations.Select(location => new LoadMenuData.LoadMenuItem()
             {
                 Image = gameSave.GetOpenedLocations()[location.Id].Thumbnail,
-                Name = location.Name,
+                LocationId = location.Id,
                 OnChosen = new Action(() =>
                 {
                     Enqueue(new TravelAction(location));

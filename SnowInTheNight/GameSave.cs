@@ -47,13 +47,15 @@ namespace SnowInTheNight
         {
             return Thumbnail;
         }
-        public string GetGameName()
+        public int GetLocationId()
         {
-            var name = Location.FromId(LastLocationId).Name;
             if (HasAutosave)
-                name = Location.Autosave.Name;
-
-            return name + " " + Core.TimeToString((int)GameTime);
+                return Location.Autosave.Id;
+            return LastLocationId;
+        }
+        public String GetGameTime()
+        {
+            return Core.TimeToString((int)GameTime);
         }
         public int GetIndex()
         {
@@ -62,10 +64,6 @@ namespace SnowInTheNight
         public Image GetSaveThumbnail()
         {
             return OpenedLocations[LastLocationId].Thumbnail;
-        }
-        public String GetSaveName()
-        {
-            return Location.FromId(LastLocationId).Name;
         }
         public Location GetLastLocation()
         {

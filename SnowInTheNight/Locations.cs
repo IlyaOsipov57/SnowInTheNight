@@ -13,10 +13,14 @@ namespace SnowInTheNight
             private set;
         }
 
+        private String name;
+
         public String Name
         {
-            get;
-            private set;
+            get
+            {
+                return TextWorks.GetText(name);
+            }
         }
 
         public String ThumbnailFilename
@@ -28,7 +32,7 @@ namespace SnowInTheNight
         private Location(int id, String name, String thumbnailFilename)
         {
             this.Id = id;
-            this.Name = name;
+            this.name = name;
             this.ThumbnailFilename = thumbnailFilename;
         }
 
@@ -37,15 +41,15 @@ namespace SnowInTheNight
             return GameSaveManager.IsVisited(this);
         }
 
-        public static Location Autosave = new Location(-1, TextWorks.GetText("В пути"), "autosave");
-        public static Location DoctorsHome = new Location(0, TextWorks.GetText("Дом доктора"), "doctors_home");
-        public static Location OldChurch = new Location(1, TextWorks.GetText("Старая церковь"), "old_church");
-        public static Location Crossroads = new Location(2, TextWorks.GetText("Распутье"), "crossroads");
-        public static Location ShepherdsHut = new Location(3, TextWorks.GetText("Хижина пастуха"), "shepherds_hut");
-        public static Location Mill = new Location(4, TextWorks.GetText("Мельница"), "windmill");
-        public static Location Graveyard = new Location(5, TextWorks.GetText("Кладбище"), "graveyard");
-        public static Location Grove = new Location(6, TextWorks.GetText("Ельник"), "grove");
-        public static Location Castle = new Location(7, TextWorks.GetText("Замок"), "castle");
+        public static Location Autosave = new Location(-1, "В пути", "autosave");
+        public static Location DoctorsHome = new Location(0, "Дом доктора", "doctors_home");
+        public static Location OldChurch = new Location(1, "Старая церковь", "old_church");
+        public static Location Crossroads = new Location(2, "Распутье", "crossroads");
+        public static Location ShepherdsHut = new Location(3, "Хижина пастуха", "shepherds_hut");
+        public static Location Mill = new Location(4, "Мельница", "windmill");
+        public static Location Graveyard = new Location(5, "Кладбище", "graveyard");
+        public static Location Grove = new Location(6, "Ельник", "grove");
+        public static Location Castle = new Location(7, "Замок", "castle");
 
         public static Location[] SaveLoadOrder = new Location[] {
             Castle,
